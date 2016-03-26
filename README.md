@@ -17,13 +17,13 @@ Keyword searching browser that saves multiple web pages into links, images and d
   - http://blog.naver.com
   - http://cafe.naver.com
 
-### Usage
-  - You do the search with other browser and preserve target webpages with this program by giving the URL.
-    `python capture.py` for continuous input
-    `python capture.py [URL]` for single capture
+### Usage by cases
   - Automatically search supported sites with a keyword and preserve all available pages.
-    `python main.py` for continuous keyword input
-    `python main.py [Keyword]` for single keyword
+    - `python main.py` for continuous keyword input
+    - `python main.py [Keyword]` for single keyword
+  - You do the search with other browser and preserve target webpages with this program by giving the URL.
+    - `python url.py` for continuous input
+    - `python url.py [URL]` for single capture
   - After capture utilities are accessible by `python util.py`
   - Press Ctrl+C to quit from continuous input
 

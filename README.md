@@ -28,4 +28,4 @@ Keyword searching browser that saves multiple web pages into links, images and d
   - Press Ctrl+C to quit from continuous input
 
 ### Related application
-  - [SplitPrint](http://openwrld.egloos.com/2827456) : When you need to print the captured long images onto paper pages to hand it over.
+  - [SplitPrint](http://openwrld.egloos.com/2827456) : When you need to print the captured long images as separated paper pages to hand it over.

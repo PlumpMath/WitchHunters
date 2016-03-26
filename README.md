@@ -27,5 +27,10 @@ Keyword searching browser that saves multiple web pages into links, images and d
   - After capture utilities are accessible by `python util.py`
   - Press Ctrl+C to quit from continuous input
 
+### Stand-alone release
+  - In corporate with [GoPythonDLLWrapper](https://github.com/chidea/GoPythonDLLWrapper)
+  - Replace `python *.py` with `*.bat` to use it.
+  - Possibly upgrade to use multiple go routines to capture massive sites parallely.
+
 ### Related application
   - [SplitPrint](http://openwrld.egloos.com/2827456) : When you need to print the captured long images as separated paper pages to hand it over.

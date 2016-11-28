@@ -6,7 +6,7 @@ def capture_url(url):
   chrome.get(url) # target page
   sleep(1) # or implicit/explicit wait for AJAX be done
   fname = url[7:].replace('/','-').replace('?', '-')
-  screenshot(fname)
+  screenshot(fname, url=url)
   source(fname)
   urllink(fname, url)
 

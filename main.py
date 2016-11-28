@@ -38,23 +38,24 @@ def source(fname, frame=''):
     wd.switch_to.default_content()
   print('saved to', fname)
 
-#from sys import platform
-#FONT_PATH = '%windir%\\fonts\\segoeui.ttf' if platform == 'win32' else '/usr/share/fonts/ttf-ancient-scripts/Aegean600.ttf'
+from sys import platform
+FONT_PATH = '%windir%\\fonts\\segoeui.ttf' if platform == 'win32' else '/usr/share/fonts/ttf-ancient-scripts/Aegean600.ttf'
 
 def screenshot(fname, frame='', url=''):
-  from PIL import Image, ImageFile, ImageDraw
+  from PIL import Image, ImageFile, ImageDraw, ImageFont
   global wd
   fname += '.png'
   wh=wd.execute_script('return window.innerHeight')
   ww=wd.execute_script('return window.innerWidth')
   th=wd.execute_script('return %s.body.parentNode.scrollHeight'%(frame if frame else 'document',))
   #tw=wd.execute_script('return %s.body.parentNode.scrollWidth'%frame)
+  font = ImageFont.truetype(FONT_PATH, 12)
   mgn = 30 if url else 15
   img=Image.new('RGB', (ww, th+mgn))
   d = ImageDraw.Draw(img)
-  d.text((3, 3), 'Image taken with WitchHunters http://github.com/chidea/WitchHunters', fill=(0,0,0))
+  d.text((3, 3), 'Image taken with WitchHunters http://github.com/chidea/WitchHunters', fill=(0,0,0), font=font)
   if url:
-    d.text((3, 15), url, fill=(0,0,0))
+    d.text((3, 15), 'From : ' + url, fill=(0,0,0), font=font)
   for sh in range(0, th, wh):
     wd.execute_script('%s.scroll(0,%d)'%(frame if frame else 'window', sh))
     sleep(.1)

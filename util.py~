@@ -10,7 +10,7 @@ from os.path import isfile
 from PIL import Image
 
 def continuous_input_blog():
-  global wd
+  global chrome
   try:
     while True:
       fname = input()
@@ -22,23 +22,23 @@ def continuous_input_blog():
       else:
         url = 'http://' + url[0] + '/' + url[1]
       print(fname, url)
-      wd.get(url)
+      chrome.get(url)
       sleep(1)
       mainframe='mainFrame'
       try:
-        wd.switch_to.frame('mainFrame')
+        chrome.switch_to.frame('mainFrame')
       except:
         mainframe='screenFrame'
-        wd.switch_to.frame(mainframe)
-        wd.switch_to.frame('mainFrame')
+        chrome.switch_to.frame(mainframe)
+        chrome.switch_to.frame('mainFrame')
       try:
         # open reply box
-        wd.find_element(By.XPATH, '//*[@id="printPost1"]/tbody/tr/td[2]/div[contains(@class, "post-btn")]/div[3]/strong[1]/a').click()
+        chrome.find_element(By.XPATH, '//*[@id="printPost1"]/tbody/tr/td[2]/div[contains(@class, "post-btn")]/div[3]/strong[1]/a').click()
       except: pass
       sleep(.2)
-      wd.switch_to.default_content()
+      chrome.switch_to.default_content()
       if mainframe != 'mainFrame':
-        wd.switch_to.frame(mainframe)
+        chrome.switch_to.frame(mainframe)
       screenshot(fname + '.png', 'mainFrame')
   except (EOFError, KeyboardInterrupt):
     pass
@@ -49,8 +49,8 @@ def continuous_input_cafe():
       fname = input()
       url = fname[11:].split('-')
       url = 'http://cafe.naver.com/' + url[0] + '/' + url[1]
-      wd.get(url)
-      wd.find_element_by_id('denyNamelessLayer')
+      chrome.get(url)
+      chrome.find_element_by_id('denyNamelessLayer')
       screenshot(fname + '.png')
   except (EOFError, KeyboardInterrupt):
     pass
@@ -71,22 +71,22 @@ def retake_long_pictures_blog(trg=None):
       else:
         url = 'http://' + url[0] + '/' + url[1]
       print(f, url)
-      wd.get(url)
+      chrome.get(url)
       sleep(1)
       mainframe='mainFrame'
       try:
-        wd.switch_to.frame('mainFrame')
+        chrome.switch_to.frame('mainFrame')
       except:
         mainframe='screenFrame'
-        wd.switch_to.frame(mainframe)
-        wd.switch_to.frame('mainFrame')
+        chrome.switch_to.frame(mainframe)
+        chrome.switch_to.frame('mainFrame')
       try:
         # open reply box
-        wd.find_element(By.XPATH, '//*[@id="printPost1"]/tbody/tr/td[2]/div[contains(@class, "post-btn")]/div[3]/strong[1]/a').click()
+        chrome.find_element(By.XPATH, '//*[@id="printPost1"]/tbody/tr/td[2]/div[contains(@class, "post-btn")]/div[3]/strong[1]/a').click()
       except: pass
-      wd.switch_to.default_content()
+      chrome.switch_to.default_content()
       if mainframe != 'mainFrame':
-        wd.switch_to.frame(mainframe)
+        chrome.switch_to.frame(mainframe)
       screenshot(f, 'mainFrame')
 
 def retake_long_pictures_cafe(trg=None):
@@ -95,12 +95,12 @@ def retake_long_pictures_cafe(trg=None):
     if Image.open(join('cafe.naver.com',f)).size[1] > 1000:
       url = f[11:-4].split('-')
       url = 'http://cafe.naver.com/' + url[0] + '/' + url[1]
-      wd.get(url)
+      chrome.get(url)
       screenshot(f)
 
 def quit():
-  global wd
-  wd.close()
+  global chrome
+  chrome.close()
   exit()
 if __name__ == '__main__':
   #for f in listdir('blog.naver.com/done'):

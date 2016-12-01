@@ -12,6 +12,7 @@ import selenium
 from selenium.webdriver.common.by import By
 
 wd = webdriver.Chrome() # can be Edge, FireFox, etc...
+wd.maximize_window()
 wd.implicitly_wait(10)
 
 def urllink(fname, url):
@@ -53,9 +54,9 @@ def screenshot(fname, frame='', url=''):
   mgn = 30 if url else 15
   img=Image.new('RGB', (ww, th+mgn))
   d = ImageDraw.Draw(img)
-  d.text((3, 3), 'Image taken with WitchHunters http://github.com/chidea/WitchHunters', fill=(0,0,0), font=font)
+  d.text((3, 3), 'Image taken with WitchHunters http://github.com/chidea/WitchHunters', fill=(255,255,255), font=font)
   if url:
-    d.text((3, 15), 'From : ' + url, fill=(0,0,0), font=font)
+    d.text((3, 15), 'From : ' + url, fill=(255,255,255), font=font)
   for sh in range(0, th, wh):
     wd.execute_script('%s.scroll(0,%d)'%(frame if frame else 'window', sh))
     sleep(.1)
